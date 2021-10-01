@@ -12,7 +12,7 @@ public class Plant implements Runnable {
  
     
     //The following is all class variables, they make the code work. Without them, the code is nothing.
-    //I got lines 22-29 all from Matt whose code will be submitted for the same assignment. I got it with his permission. Throughout this assignment is more code from Matt that I have commented above and below those parts.
+    //I got lines 16-24 all from Matt whose code will be submitted for the same assignment. I got it with his permission. Throughout this assignment is more code from Matt that I have commented above and below those parts.
     public final int ORANGES_PER_BOTTLE = 3; 
     public final Thread thread; 
     private int orangesProvided; 
@@ -42,7 +42,7 @@ public class Plant implements Runnable {
         
         // The following has a join statement. The join statement waits for the thread to die before it activates.
         // The interruptedException is there if a thread interrupts the current thread.
-        // Lines 52-58 are code that I got from Matt's code
+        // Lines 46-53 are code that I got from Matt's code
         for (Plant p : plants) { 
             try {
                 p.thread.join();
@@ -82,7 +82,7 @@ public class Plant implements Runnable {
     /**
      * Below is the Constructor for the two plants including how many oranges are provided/processed and it also creates the worker threads who work at the plant 
      */
-    // I got lines 92-100 from Matt's code
+    // I got lines 86-94 from Matt's code
     Plant(int threadNum) {
         orangesProvided = 0;
         orangesProcessed = 0;
@@ -99,7 +99,7 @@ public class Plant implements Runnable {
      * @desc This is the method to be called by the worker threads who want a orange which it will either create or give one that is already created to the worker
      *  It also synchronizes so that it avoids multithreading issues
      */
-    // I got the lines 109-117 below from Matt
+    // I got the lines 103-111 below from Matt
     public synchronized Orange getOrange() { 
         int size = getPileSize();
         if(size > 0) {
@@ -112,7 +112,7 @@ public class Plant implements Runnable {
     // end of these lines of code from Matt
     
     // This starts the Plant threads and also starts the worker threads as well. This is different from the creation above because now they are starting their tasks
-    // I got lines 122-128 from Matt's code too with his permission.
+    // I got lines 115-122 from Matt's code too with his permission.
     public void startPlant() {
         timeToWork = true;
         for(Worker w:workers) { 
@@ -123,7 +123,7 @@ public class Plant implements Runnable {
     // end of these lines of code from Matt
     
     // The method below is the method that is called to stop the worker threads from working, this is usually when they finish their tasks
-    // I got lines 133-138 from Matt's code.
+    // I got lines 127-132 from Matt's code.
     public synchronized void stopPlant() {
     	for(Worker w : workers) { 
             w.stopWorking();
@@ -133,7 +133,7 @@ public class Plant implements Runnable {
     // end of these lines of code from Matt
     
     //Below is the run method, it starts the program with processing oranges and stopping it. It also only runs when it is allowed dto work in the allotted time
-    // I got lines 143-158 from Matt's code
+    // I got lines 137-152 from Matt's code
     public void run() {
         System.out.print(Thread.currentThread().getName() + " Processing oranges");
         while (timeToWork) { 
@@ -154,7 +154,7 @@ public class Plant implements Runnable {
     
     
     // All the below are synchronized get and add methods to make sure everything is working correctly and how it should be
-    // I got lines 164-178 all from Matt's code.
+    // I got lines 158-172 all from Matt's code.
     public synchronized void addOrange(Orange o) { 
         orangePile.add(o);
     }
