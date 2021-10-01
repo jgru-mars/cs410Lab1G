@@ -13,15 +13,15 @@
   </target>
 
   <target name="jar" depends="init,compile">
-    <jar destfile="${dist}/Hello.jar" basedir="${dist}/classes">
+    <jar destfile="${dist}/GrouxLab1.jar" basedir="${dist}/classes">
       <manifest>
-        <attribute name="Main-Class" value="notes410/HelloWorldjosiah"/>
+        <attribute name="Main-Class" value="lab1/Plant"/>
       </manifest>
     </jar>
   </target>
 
   <target name="run" depends="jar">
-    <java jar="${dist}/Hello.jar" fork="true"/>
+    <java jar="${dist}/GrouxLab1.jar" fork="true"/>
   </target>
 
   <target name="clean">
